@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FBFB">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="h,375:467"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/guide_bg"></androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivGuide"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="57dp"
+        android:layout_marginTop="85dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="h,261:281"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_guide1"></androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGuide"
+        style="@style/app_text_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:gravity="center"
+        android:text="@string/app_guide_title1"
+        android:textColor="#0F172A"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/ivGuide"></androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGuide2"
+        style="@style/app_text_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/app_guide_content1"
+        android:textColor="#64748B"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/tvGuide"></androidx.appcompat.widget.AppCompatTextView>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLater"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/app_later"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FF8396B1"
+            android:background="@drawable/shape_later"
+            android:textSize="15sp"
+            android:gravity="center"
+            ></androidx.appcompat.widget.AppCompatTextView>
+
+        <FrameLayout
+            android:id="@+id/flCommit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="11dp"
+            android:background="@drawable/shape_commit"
+            android:clipChildren="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clipToOutline="true">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCommit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_commit"
+                android:text="@string/app_next"
+                android:textAllCaps="false"
+                android:gravity="center"
+                style="@style/app_text_bold"
+                android:textColor="@color/white"
+                android:textSize="17sp"></androidx.appcompat.widget.AppCompatTextView>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <FrameLayout
+        android:id="@+id/flADRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_native_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        android:layout_marginHorizontal="10dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

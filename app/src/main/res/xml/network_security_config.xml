@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Preserve HTTP compatibility for the existing remote service endpoints. -->
+    <base-config
+        cleartextTrafficPermitted="true" />
+</network-security-config>

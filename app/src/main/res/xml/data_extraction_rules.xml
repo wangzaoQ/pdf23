@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 12+ data extraction declaration.
+    Backup remains disabled at the application level, so no cloud-backup or
+    device-transfer data domains are explicitly included.
+-->
+<data-extraction-rules>
+    <cloud-backup />
+</data-extraction-rules>

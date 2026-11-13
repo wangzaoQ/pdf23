@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PDF14-MIGRATION: 原样迁入 pdf14 小工具资源，仅隔离资源名、引用及控件包路径；未改页面逻辑。 -->
+<!-- 缩略图按比例完整展示源页，页码保留原值；条目没有拖动控件，不影响其他队列条目。 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="84dp"
+    android:layout_marginHorizontal="16dp" android:layout_marginTop="8dp" android:background="@drawable/bg_item_pdf">
+    <ImageView android:id="@+id/ivCover" android:layout_width="52dp" android:layout_height="64dp"
+        android:layout_marginStart="14dp" android:layout_centerVertical="true" android:scaleType="fitCenter" />
+    <TextView android:id="@+id/tvTitle" style="@style/app_text_bold" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_toEndOf="@id/ivCover" android:layout_toStartOf="@id/ivDelete"
+        android:layout_marginHorizontal="14dp" android:layout_centerVertical="true" android:maxLines="1"
+        android:ellipsize="end" android:textColor="#0F172A" android:textSize="14sp" />
+    <androidx.appcompat.widget.AppCompatImageView android:id="@+id/ivDelete"
+        android:layout_width="48dp" android:layout_height="48dp" android:padding="12dp"
+        android:layout_marginEnd="8dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true"
+        android:contentDescription="@string/app_split_remove" app:srcCompat="@drawable/ic_delete" />
+</RelativeLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="14dp"
+    android:layout_marginHorizontal="14dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_20r"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icLauncher"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:shapeAppearance="@style/style_round_style_8r"
+            app:srcCompat="@mipmap/ic_launcher"></com.google.android.material.imageview.ShapeableImageView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/app_text_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/icLauncher"
+            android:layout_alignBottom="@+id/icLauncher"
+            android:layout_marginStart="76dp"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="#090A0A"
+            android:textSize="17sp"></androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="75dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:gravity="center"
+                android:background="@drawable/shape_pdf_recent"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    app:srcCompat="@drawable/ic_recent_tips"
+                    ></androidx.appcompat.widget.AppCompatImageView>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_continue_read"
+                    android:textColor="#FF07C6C9"
+                    android:textSize="13sp"
+                    style="@style/app_text_bold"
+                    android:layout_marginStart="4dp"
+                    ></androidx.appcompat.widget.AppCompatTextView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/app_text_bold2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_alignTop="@+id/icLauncher"
+            android:layout_alignBottom="@+id/icLauncher"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/app_system_pop_title"
+            android:textColor="#FF0F172A"
+            android:textSize="16sp"></androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/app_text_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icLauncher"
+            android:layout_marginTop="7dp"
+            android:ellipsize="end"
+            android:text="@string/app_system_pop_content"
+            android:textColor="#FF64748B"
+            android:textSize="14sp"></androidx.appcompat.widget.AppCompatTextView>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivPreview"
+                android:layout_width="match_parent"
+                android:layout_height="134dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="1dp"
+                app:shapeAppearance="@style/Round16Shape"
+                android:scaleType="centerCrop"></com.google.android.material.imageview.ShapeableImageView>
+
+            <FrameLayout
+                android:id="@+id/commit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/shape_commit"
+                android:layout_marginTop="16dp"
+                android:clipChildren="true"
+                android:layout_marginBottom="20dp"
+                android:clipToOutline="true">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCommit"
+                    style="@style/app_text_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_commit"
+                    android:gravity="center"
+                    android:text="@string/app_open"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"></androidx.appcompat.widget.AppCompatTextView>
+
+                <View
+                    android:id="@+id/vCommitShine"
+                    android:layout_width="58dp"
+                    android:layout_height="76dp"
+                    android:layout_gravity="center_vertical"
+                    android:alpha="0.65"
+                    android:background="@drawable/bg_primary_action_shimmer"
+                    android:importantForAccessibility="no"
+                    android:rotation="18" />
+            </FrameLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivClose"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_system_pop_close"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="6dp"
+            android:layout_marginTop="6dp"
+            ></androidx.appcompat.widget.AppCompatImageView>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 导出使用独立样式，不使用预览页清除所有内外边距的规则，保留 DOCX 原有排版。 -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src data: blob:; font-src data: blob:; connect-src 'none'">
+<style>
+html,body { margin:0; padding:0; background:white; }
+.docx-wrapper { display:block !important; padding:0 !important; background:white !important; }
+.docx-wrapper > section.docx { box-shadow:none !important; margin:0 !important; }
+</style></head><body><div id="app"></div>
+<script type="module">
+import { renderDocxAsync } from './assets/doc.js';
+// Kotlin 轮询这个状态；只有渲染 Promise、字体和图片都完成后才允许绘制 PDF。
+window.exportStatus = 'ready';
+window.exportMetrics = function() {
+  const sections = Array.from(document.querySelectorAll('.docx-wrapper > section.docx'));
+  if (!sections.length) throw new Error('No DOCX pages');
+  const pages = [];
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect();
+    const style = getComputedStyle(section);
+    const paperHeight = parseFloat(style.minHeight) || 1122.52;
+    const overflows = rect.height > paperHeight + 0.5;
+    const marginTop = parseFloat(style.paddingTop) || 0;
+    const marginBottom = parseFloat(style.paddingBottom) || 0;
+    // 续页会重新留出底边距，原节末尾的空白不应单独产生额外一页。
+    const contentEnd = rect.height - (overflows ? marginBottom : 0);
+    // 长节的行边界只计算一次，后续分页复用，避免逐页重复遍历整个文档。
+    const cuts = [];
+    if (overflows) {
+      const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        if (!walker.currentNode.textContent.trim()) continue;
+        const range = document.createRange();
+        range.selectNodeContents(walker.currentNode);
+        for (const box of range.getClientRects()) cuts.push(box);
+      }
+      for (const node of section.querySelectorAll('img, svg, tr')) cuts.push(node.getBoundingClientRect());
+    }
+    // docx-preview 保留显式分页；没有分页符的长节还需要切成多张纸。
+    for (let offset = 0; offset < contentEnd - 0.5;) {
+      const insetTop = offset > 0 ? marginTop : 0;
+      const availableHeight = paperHeight - insetTop - (overflows ? marginBottom : 0);
+      if (availableHeight <= 0) throw new Error('Invalid DOCX page margins');
+      let end = Math.min(offset + availableHeight, contentEnd);
+      if (end < contentEnd - 0.5) {
+        // 优先在文字行、图片和表格行之前换页，避免简单定高裁切割断内容。
+        // 可能有重叠对象，反复向前收缩切点；高于整页的对象只能分片。
+        let previous;
+        do {
+          previous = end;
+          for (const box of cuts) {
+            const top = box.top - rect.top;
+            const bottom = box.bottom - rect.top;
+            if (top > offset + 0.5 && top < end && bottom > end) end = top;
+          }
+        } while (end < previous);
+      }
+      pages.push({left:rect.left, top:rect.top + offset, width:rect.width,
+        height:paperHeight, contentHeight:end - offset, insetTop});
+      offset = end;
+    }
+  }
+  return {pages};
+};
+// 原生端把视口调整到当前纸张大小；只移动内容，不改变文档的排版和分页。
+window.exportShowPage = function(page) {
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('app').style.transform = `translate(${-page.left}px, ${-page.top}px)`;
+  // innerWidth 在 WebView 改变尺寸时可能暂时返回旧值，不能用它换算 Canvas 缩放。
+  return window.devicePixelRatio * (window.visualViewport?.scale || 1);
+};
+window.exportDocx = async function(base64) {
+  window.exportStatus = 'rendering';
+  try {
+    const bytes = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+    await renderDocxAsync(bytes.buffer, document.getElementById('app'), null, {
+      className:'docx', inWrapper:true, hideWrapperOnPrint:true,
+      useBase64URL:true, renderAltChunks:false
+    });
+    await document.fonts.ready;
+    await Promise.all(Array.from(document.images, img => img.decode()));
+    // 强制计算布局；原生端随后读取每页的边界并等待 Chromium 提交绘制结果。
+    document.body.getBoundingClientRect();
+    window.exportStatus = 'complete';
+  } catch (error) {
+    window.exportStatus = 'failed';
+  }
+};
+</script></body></html>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#FFDBF0EF"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:src="@mipmap/ic_nf_logo"></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nf_home"></ImageView>
+
+            <TextView
+                android:id="@+id/tvHome"
+                style="@style/app_text_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/app_home"
+                android:textColor="#FF1E3A5F"
+                android:textSize="10sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nf_search"></ImageView>
+
+            <TextView
+                android:id="@+id/tvSearch"
+                style="@style/app_text_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/app_search"
+                android:textColor="#FF1E3A5F"
+                android:textSize="10sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llScan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nf_scan"></ImageView>
+
+            <TextView
+                android:id="@+id/tvScan"
+                style="@style/app_text_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/app_scan"
+                android:textColor="#FF1E3A5F"
+                android:textSize="10sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llConvert"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_nf_convert"></ImageView>
+
+            <TextView
+                android:id="@+id/tvConvert"
+                style="@style/app_text_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/app_convert"
+                android:textColor="#FF1E3A5F"
+                android:textSize="10sp"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

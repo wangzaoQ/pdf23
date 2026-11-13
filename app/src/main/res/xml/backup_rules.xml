@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Legacy full-backup declaration for Android 11 and earlier.
+    The application disables backup through android:allowBackup="false";
+    no application data domains are explicitly included here.
+-->
+<full-backup-content />

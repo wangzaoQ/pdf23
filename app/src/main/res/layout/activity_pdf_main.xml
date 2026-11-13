@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F7FBFB">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragmentMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="82dp"
+        ></androidx.viewpager.widget.ViewPager>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        app:cardCornerRadius="17dp"
+        app:strokeColor="#1E3A5F"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginHorizontal="10dp"
+
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llFile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:foreground="?android:selectableItemBackgroundBorderless"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:srcCompat="@drawable/selector_navigation_files_icon" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_file"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    style="@style/app_text_bold"
+                    android:textColor="@drawable/selector_navigation_text" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_weight="1"
+                android:id="@+id/ivScanEntry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_home_scan"
+                android:scaleType="centerInside"
+                ></androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llTool"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:foreground="?android:selectableItemBackgroundBorderless"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:srcCompat="@drawable/selector_navigation_tools_icon" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_tool"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    style="@style/app_text_bold"
+                    android:textColor="@drawable/selector_navigation_text" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- 当前项目常用的深蓝品牌色，主要用于顶部区域、导航和主要控件。 -->
+    <color name="app_primary">#FF1E3A5F</color>
+    <!-- 深蓝品牌色的深色状态，用于按下态及需要更强层级的区域。 -->
+    <color name="app_primary_dark">#FF142A45</color>
+    <!-- 当前项目常用的青绿色强调色，用于按钮、进度和选中状态。 -->
+    <color name="app_accent">#FF0F766E</color>
+    <!-- 青绿色强调色的深色状态。 -->
+    <color name="app_accent_dark">#FF0B5F59</color>
+    <color name="pdf_tool_selected">#1A1D22</color>
+    <color name="pdf_tool_unselected">#A8A29E</color>
+    <color name="pdf_color_red">#D50000</color>
+    <color name="pdf_color_orange">#F57C00</color>
+    <color name="pdf_color_green">#47C95A</color>
+    <color name="pdf_color_blue">#4093F1</color>
+    <color name="pdf_color_purple">#9B5DE5</color>
+    <color name="pdf_pdf_divider">#FFE7E5E4</color>
+
+</resources>

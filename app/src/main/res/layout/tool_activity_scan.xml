@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PDF14-MIGRATION: 原样迁入 pdf14 小工具资源，仅隔离资源名、引用及控件包路径；未改页面逻辑。 -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F7FBFB">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:background="@drawable/bg_common_top1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_alignParentBottom="true"
+            >
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                app:srcCompat="@drawable/ic_back"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                ></androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_scan"
+                android:layout_centerInParent="true"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                style="@style/app_text_bold"
+                ></androidx.appcompat.widget.AppCompatTextView>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="102dp"
+        android:background="#F7FBFB"
+        >
+        <FrameLayout
+            android:id="@+id/flRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="46dp"
+            android:layout_marginHorizontal="46dp"
+            android:layout_marginBottom="230dp"
+            >
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                app:layout_constraintDimensionRatio="h,306:437"
+                ></androidx.viewpager2.widget.ViewPager2>
+
+            <com.pdf.editor.ui.tools.document.scan.CornerBorderView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="4dp"/> <!-- 让线离边缘一点 -->
+
+            <!-- 中间扫描线 -->
+            <View
+                android:id="@+id/scanLine"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_scan_preview_frame"
+                ></View>
+        </FrameLayout>
+
+    </FrameLayout>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_scan_preview_loading"
+            android:textSize="16sp"
+            android:textColor="#AAAAAA"
+            style="@style/app_text_bold"
+            ></androidx.appcompat.widget.AppCompatTextView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="28dp"
+            android:textColor="@color/white"
+            android:text="@string/app_save_pdf"
+            android:enabled="false"
+            style="@style/app_text_bold"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            android:background="@drawable/selector_action_save"
+            android:layout_marginBottom="21dp"
+            android:layout_marginTop="18dp"
+            >
+
+        </androidx.appcompat.widget.AppCompatButton>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

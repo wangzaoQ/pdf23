@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293662339404",
+    "project_id": "testpdf-dbfcb",
+    "storage_bucket": "testpdf-dbfcb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293662339404:android:353d691e783f6eea5f9fe9",
+        "android_client_info": {
+          "package_name": "com.test.pdf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVsxOlZy6Ob6u6FrdzBaq-vHdrR79vRt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!-- PDF14-MIGRATION: 原样迁入 pdf14 工具页面；仅包名、资源名及当前项目基类/宿主接口适配。 -->
+<!-- PDF 队列沿用图片队列控件排列，序号与长文件名均限制宽度，避免遮挡删除和拖动按钮。 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="71dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/bg_item_pdf">
+
+    <TextView
+        android:id="@+id/tvNum"
+        style="@style/app_text_bold"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="#64748B"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/ivCover"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/tvNum" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/app_text_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_toStartOf="@id/ivDelete"
+        android:layout_toEndOf="@id/ivCover"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="#0F172A"
+        android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/ivDrag"
+        android:contentDescription="@string/app_merge_remove"
+        android:padding="4dp"
+        app:srcCompat="@drawable/ic_delete" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDrag"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/app_merge_reorder"
+        android:padding="4dp"
+        app:srcCompat="@drawable/ic_drag" />
+</RelativeLayout>

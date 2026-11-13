@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Rebuilt local document viewer shell for the current application. -->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+        }
+
+        #excel-container {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          padding: 10px;
+          overflow-wrap: break-word; /* 自动换行 */
+          word-break: break-word;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          word-break: break-word;
+        }
+
+        th, td {
+          border: 1px solid #ccc;
+          padding: 4px;
+          text-align: left;
+          vertical-align: top;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="excel-container"></div>
+
+<script src="xlsx.full.min.js"></script>
+<script>
+    function renderExcel(base64) {
+        // 将 base64 转成 ArrayBuffer
+        var data = Uint8Array.from(atob(base64), c => c.charCodeAt(0)).buffer;
+
+        // 使用 SheetJS 解析 Excel
+        var workbook = XLSX.read(data, {type: 'array'});
+        var html = '';
+
+        workbook.SheetNames.forEach(function(sheetName) {
+            var worksheet = workbook.Sheets[sheetName];
+            var sheetHtml = XLSX.utils.sheet_to_html(worksheet, {id: sheetName});
+            html += sheetHtml;
+        });
+
+        document.getElementById('excel-container').innerHTML = html;
+    }
+</script>
+</body>
+</html>

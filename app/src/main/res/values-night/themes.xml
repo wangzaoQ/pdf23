@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Pdf" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- 夜间资源沿用项目深蓝品牌色，保持导航和主要控件视觉一致。 -->
+        <item name="colorPrimary">@color/app_primary</item>
+        <!-- 深蓝色的深色状态，当前也作为夜间状态栏背景色使用。 -->
+        <item name="colorPrimaryVariant">@color/app_primary_dark</item>
+        <!-- 显示在主要品牌色背景上的文字和图标颜色。 -->
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- 青绿色强调色：圆形 ProgressBar 和部分次级 Material 控件默认使用该颜色。 -->
+        <item name="colorSecondary">@color/app_accent</item>
+        <!-- 青绿色强调色的深色状态，供旧版 Material 控件的状态变化使用。 -->
+        <item name="colorSecondaryVariant">@color/app_accent_dark</item>
+        <!-- 显示在次要强调色背景上的文字和图标颜色。 -->
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- AppCompat/Material 控件的应用级默认字体。 -->
+        <item name="fontFamily">@font/poppins</item>
+        <!-- Android Framework 原生控件的应用级默认字体。 -->
+        <item name="android:fontFamily">@font/poppins</item>
+        <!-- 夜间资源下的状态栏背景色，取主要品牌色的深色变体。 -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>

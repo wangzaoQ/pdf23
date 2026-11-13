@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PDF14-MIGRATION: copied from pdf14; only resource names/references and custom view package are adapted. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FBFB">
+
+    <RelativeLayout
+        android:id="@+id/pdfTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F172A"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:layout_marginTop="22dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:contentDescription="@string/app_back"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/previewTitle"
+                style="@style/app_text_bold2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="64dp"
+                android:layout_marginEnd="64dp"
+                android:ellipsize="middle"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <!-- Retained solely for the existing edit implementation; this legacy control is never shown. -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/finishButton"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--
+        与 pdf13 一致的文字输入标题栏。选择“添加文字”后覆盖普通标题栏，
+        Done 只结束本次键盘输入，真正写入 PDF 仍由底部 Save 完成。
+    -->
+    <RelativeLayout
+        android:id="@+id/rlTop2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1B2431"
+        android:elevation="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:layout_marginTop="22dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack2"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:contentDescription="@string/app_back"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/previewTitle2"
+                style="@style/app_text_bold2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="70dp"
+                android:ellipsize="middle"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <!-- Retained solely for the existing edit implementation; this legacy control is never shown. -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDone"
+                style="@style/app_text_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="7dp"
+                android:text="@string/app_done"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                ></androidx.appcompat.widget.AppCompatTextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.pdf.editor.ui.detail.reader.ImePanRelativeLayout
+        android:id="@+id/viewerRoot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/pdfBottomControl"
+        app:layout_constraintTop_toBottomOf="@id/pdfTopBar">
+
+        <com.pdf.editor.ui.detail.reader.PdfiumDocumentView
+            android:id="@+id/pdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <com.pdf.editor.ui.detail.reader.PdfAnnotationOverlayView
+            android:id="@+id/annotationOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/pdfTextEditor"
+            style="@style/app_text_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pdf_shape_pdf_text_editor"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="8"
+            android:minWidth="84dp"
+            android:padding="6dp"
+            android:textColor="#1B2431"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <com.pdf.editor.ui.detail.reader.PdfImageOverlayView
+            android:id="@+id/imageOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/pageScrubber"
+            android:layout_width="44dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/shape_reader_page_scrubber"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pageScrubberText"
+                style="@style/app_text_bold2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#4B5563"
+                android:textSize="15sp"
+                tools:text="28" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pdfLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </com.pdf.editor.ui.detail.reader.ImePanRelativeLayout>
+    <!-- Imported pdf13 interaction shell, backed by the native PDF editor. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/annotationPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="12dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/annotationTools"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="19dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/highlightTool"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/highlightIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/selector_reader_highlight_icon" />
+
+                <TextView
+                    android:id="@+id/highlightLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_highlight"
+                    android:textColor="@drawable/selector_reader_tool_text"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/drawTool"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/drawIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/selector_reader_draw_icon" />
+
+                <TextView
+                    android:id="@+id/drawLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_draw"
+                    android:textColor="@drawable/selector_reader_tool_text"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/underlineTool"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/underlineIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/selector_reader_underline_icon" />
+
+                <TextView
+                    android:id="@+id/underlineLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_underline"
+                    android:textColor="@drawable/selector_reader_tool_text"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/eraseTool"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/eraseIcon"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/selector_reader_erase_icon" />
+
+                <TextView
+                    android:id="@+id/eraseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_erase"
+                    android:textColor="@drawable/selector_reader_tool_text"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/annotationDivider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="19dp"
+            android:background="@color/pdf_pdf_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/annotationTools" />
+
+        <LinearLayout
+            android:id="@+id/colorTools"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="9dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/annotationDivider">
+
+            <View
+                android:id="@+id/colorRed"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/shape_annotation_red"
+                android:foreground="@drawable/selector_pdf_color_selected" />
+
+            <View
+                android:id="@+id/colorOrange"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="14dp"
+                android:background="@drawable/shape_annotation_orange"
+                android:foreground="@drawable/selector_pdf_color_selected" />
+
+            <View
+                android:id="@+id/colorGreen"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="14dp"
+                android:background="@drawable/shape_annotation_green"
+                android:foreground="@drawable/selector_pdf_color_selected" />
+
+            <View
+                android:id="@+id/colorBlue"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="14dp"
+                android:background="@drawable/shape_annotation_blue"
+                android:foreground="@drawable/selector_pdf_color_selected" />
+
+            <View
+                android:id="@+id/colorPurple"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="14dp"
+                android:background="@drawable/shape_annotation_purple"
+                android:foreground="@drawable/selector_pdf_color_selected" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/annotationDone"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="19dp"
+            android:gravity="center"
+            android:text="@string/app_done"
+            android:textColor="#FF0F766E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/annotationDivider" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/editToolsBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="11dp"
+        android:background="@drawable/shape_pdf_edit"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/editCommandBar">
+
+        <LinearLayout
+            android:id="@+id/addTextTool"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_reader_add_action"
+            android:foreground="@drawable/ripple_reader_item"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/addTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_add_text"
+                android:textColor="@drawable/selector_pdf_text2"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addImageTool"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_reader_add_action"
+            android:foreground="@drawable/ripple_reader_item"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/addImageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_add_image"
+                android:textColor="@drawable/selector_pdf_text2"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addSignTool"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_reader_add_action"
+            android:foreground="@drawable/ripple_reader_item"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/addSignLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_add_sign"
+                android:textColor="@drawable/selector_pdf_text2"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pdfBottomControl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_reader_bottom_panel"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/notesAction"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/ripple_reader_item"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/notesIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_notes2" />
+
+            <TextView
+                android:id="@+id/notesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="@string/app_notes"
+                android:textColor="#FF666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editAction"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/ripple_reader_item"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/editIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_edit2" />
+
+            <TextView
+                android:id="@+id/editLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="@string/app_edit"
+                android:textColor="#FF666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/editCommandBar"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/bg_reader_bottom_panel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llPdfBack"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+           >
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:tint="#1B2431"
+                app:srcCompat="@drawable/ic_back" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_undo"
+                android:textColor="#FF090A0A"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                ></androidx.appcompat.widget.AppCompatTextView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveAction"
+            android:layout_width="154dp"
+            android:layout_height="43dp"
+            android:background="@drawable/shape_commit"
+            android:text="@string/app_save"
+            android:textAllCaps="false"
+            android:textColor="#FFF7F5"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pageInfo"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pdf_shape_pdf_page_info"
+        android:elevation="12dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pageInfoCurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#4B5563"
+            android:textSize="34sp"
+            tools:text="28" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="#334B5563" />
+
+        <TextView
+            android:id="@+id/pageInfoTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="14dp"
+            android:textColor="#4B5563"
+            android:textSize="16sp"
+            tools:text="50" />
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/shape_commit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:visibility="gone"
+        tools:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/app_text_bold" />
+</androidx.constraintlayout.widget.ConstraintLayout>

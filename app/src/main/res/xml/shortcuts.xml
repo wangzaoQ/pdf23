@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Desktop long-press entry for the uninstall retention flow. -->
+    <shortcut
+        android:shortcutId="shortcut_uninstall"
+        android:enabled="true"
+        android:icon="@mipmap/ic_uninstall"
+        android:shortcutShortLabel="@string/app_uninstall"
+        android:shortcutLongLabel="@string/app_uninstall"
+        android:shortcutDisabledMessage="@string/app_uninstall">
+        <intent
+            android:action="com.test.pdf.action.SHORTCUT_UNINSTALL"
+            android:targetClass="com.pdf.editor.ui.shortcut.PdfShortcutActivity"
+            android:targetPackage="com.test.pdf" />
+    </shortcut>
+</shortcuts>

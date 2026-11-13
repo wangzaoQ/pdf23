@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FBFB">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="432dp"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bg_start" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/llActions"
+        android:clipToPadding="false"
+        android:paddingTop="100dp"
+        android:paddingBottom="24dp"
+        android:scrollbars="none">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="233dp"
+                android:layout_marginHorizontal="20dp"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_system_tips" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/app_text_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/app_system_title"
+                android:textColor="#0F172A"
+                android:textSize="21sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/app_text_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:text="@string/ai_system_content1"
+                android:textColor="#64748B"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/app_text_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/ai_system_content2"
+                android:textColor="#64748B"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_nf_tips">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@mipmap/ic_nf_logo" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/app_text_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="76dp"
+                    android:layout_marginEnd="64dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <FrameLayout
+                    android:id="@+id/switchRoot"
+                    android:layout_width="40dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="no"
+                        app:srcCompat="@drawable/ic_switch1" />
+                </FrameLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLater"
+            style="@style/app_text_normal"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/shape_later"
+            android:gravity="center"
+            android:text="@string/app_later"
+            android:textColor="#8396B1"
+            android:textSize="15sp" />
+
+        <FrameLayout
+            android:id="@+id/flCommit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="11dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_commit"
+            android:clipChildren="true"
+            android:clipToOutline="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCommit"
+                style="@style/app_text_bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_commit"
+                android:gravity="center"
+                android:text="@string/app_continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <View
+                android:id="@+id/vCommitShine"
+                android:layout_width="58dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center_vertical"
+                android:alpha="0.65"
+                android:background="@drawable/bg_primary_action_shimmer"
+                android:importantForAccessibility="no"
+                android:rotation="18" />
+        </FrameLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

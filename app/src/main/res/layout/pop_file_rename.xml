@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/llRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_dialog_white_24"
+    android:layout_marginHorizontal="16dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_rename"
+        style="@style/app_text_bold"
+        android:layout_marginTop="23dp"
+        android:textColor="#FF1A1D22"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        ></androidx.appcompat.widget.AppCompatTextView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_rename_input"
+        >
+        <EditText
+            android:id="@+id/etEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="#FFB3B3B3"
+            android:textColor="#FF090A0A"
+            android:background="@null"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:gravity="center"
+            android:hint="@string/app_edit_name_hint"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionDone"
+            android:selectAllOnFocus="true"
+            android:textSize="15sp"
+            style="@style/app_text_bold"
+            ></EditText>
+
+    </RelativeLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCancel"
+            style="@style/app_text_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_rename_cancel"
+            android:gravity="center"
+            android:text="@string/app_cancel"
+            android:textColor="#FF8EA0BC"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvConfirm"
+            style="@style/app_text_bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_action_save"
+            android:gravity="center"
+            android:text="@string/app_save"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

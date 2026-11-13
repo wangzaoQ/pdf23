@@ -1,0 +1,85 @@
+# === Android / Gradle ===
+.gradle/
+build/
+*/build/
+!gradle-wrapper.jar
+/local.properties
+
+# Signing files
+*.jks
+*.keystore
+key.properties
+
+# === OS / System files ===
+.DS_Store
+Thumbs.db
+
+# === Android Studio ===
+.idea/
+*.iml
+out/
+
+# === Logs ===
+*.log
+
+# === Temporary files ===
+*.temp
+*.tmp
+
+# === Cache ===
+.cxx/
+captures/
+outputs/
+
+# === Gradle — Wrapper / Tasks ===
+.gradle/
+**/.gradle/
+.gradle/cache/
+.gradle/buildOutputCleanup/
+.gradle/6.*/  # 根据版本会自动生成
+
+# === Jetpack Compose ===
+compose-metrics/
+compose-traces/
+
+# === Kotlin ===
+kotlin-js-store/
+
+# === Android build variants ===
+app/release/
+app/release/*
+*/release/
+*/debug/
+*/profile/
+
+# === NDK / C++ ===
+.externalNativeBuild/
+cmake-build-debug/
+obj/
+
+# === Lint ===
+lint/intermediates/
+lint/generated/
+lint/outputs/
+
+# === Parcelable / Generated ===
+**/generated/
+
+# === Misc ===
+*.orig
+*.bak
+
+# Generated migration/audit artifacts
+/reports/
+/tmp/
+/docs/pdf14-*
+/docs/pdf-guide-migration.md
+
+# Local documentation, helper scripts, and generated output
+/docs/
+/tools/
+/output/
+
+# Local test sources
+/app/src/test/
+/app/src/androidTest/

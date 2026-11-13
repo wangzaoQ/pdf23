@@ -1,0 +1,76 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Pdf" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- 项目常用深蓝色：默认影响 Material 按钮、开关、选中态及部分控件的主要颜色。 -->
+        <item name="colorPrimary">@color/app_primary</item>
+        <!-- 深蓝色的深色状态：供旧版 Material 控件的按下态或深色强调区域使用。 -->
+        <item name="colorPrimaryVariant">@color/app_primary_dark</item>
+        <!-- 显示在主要品牌色背景上的内容颜色，例如按钮文字和图标。 -->
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- 项目常用青绿色：圆形 ProgressBar、部分选择控件和次级 Material 控件默认使用该颜色。 -->
+        <item name="colorSecondary">@color/app_accent</item>
+        <!-- 青绿色的深色状态，供旧版 Material 控件的按下态或深色次级区域使用。 -->
+        <item name="colorSecondaryVariant">@color/app_accent_dark</item>
+        <!-- 显示在次要强调色背景上的文字和图标颜色。 -->
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- AppCompat/Material 控件的应用级默认字体。 -->
+        <item name="fontFamily">@font/poppins</item>
+        <!-- Android Framework 原生 TextView 等控件的应用级默认字体。 -->
+        <item name="android:fontFamily">@font/poppins</item>
+        <!-- 系统状态栏的背景颜色；状态栏图标明暗仍由 Window 的系统栏配置决定。 -->
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="app_text_bold">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="app_text_bold2">
+        <item name="android:fontFamily">@font/poppins_extrabold</item>
+        <item name="fontFamily">@font/poppins_extrabold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="app_text_normal">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="style_round_style_8r">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="Round12Shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Round16Shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="TranslucentActivity" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

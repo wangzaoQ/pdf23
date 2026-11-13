@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Rebuilt local document viewer shell for the current application. -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            font-size: 16px;
+            padding: 16px;
+            line-height: 1.6;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        #content {
+            width: 100%;            /* 🔥 关键，自动适配屏幕宽度 */
+            white-space: pre-wrap;  /* 保留换行，自动换行 */
+            word-wrap: break-word;  /* 遇到长单词自动折行 */
+            word-break: break-word; /* 强制长字符折行 */
+
+        }
+    </style>
+</head>
+
+<body>
+<pre id="content">...</pre>
+
+<script>
+    function loadTxt() {
+        window.Android.readTxt();
+    }
+    window.onload = loadTxt;
+
+    function showTxt(text) {
+        document.getElementById("content").textContent = text;
+    }
+</script>
+
+</body>
+</html>
